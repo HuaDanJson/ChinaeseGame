@@ -43,7 +43,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
-        android:text="初中成语"
+        android:text="中学成语"
         android:textStyle="bold"/>
 
     <Button
@@ -52,7 +52,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="20dp"
-        android:text="初中诗词"
+        android:text="中学诗词"
         android:textStyle="bold"/>
 
 </LinearLayout>

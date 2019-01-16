@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="小学成语"
+        android:text="中学诗词"
         android:textColor="@color/red_common_pure"
         android:textSize="28sp"
         android:textStyle="bold"/>
@@ -42,17 +42,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_stroke_white_18dp"
             android:padding="16dp"
-            android:text="吉"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/shape_stroke_white_18dp"
-            android:padding="16dp"
-            android:text=""
+            android:text="故"
             android:textStyle="bold"/>
 
         <TextView
@@ -61,23 +51,38 @@
             android:layout_marginLeft="15dp"
             android:background="@drawable/shape_stroke_white_18dp"
             android:padding="16dp"
-            android:text="如"
+            android:text="人"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/shape_stroke_white_18dp"
+            android:padding="16dp"
+            android:text="具"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/shape_stroke_white_18dp"
+            android:padding="16dp"
+            android:text="鸡"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/shape_stroke_white_18dp"
+            android:padding="16dp"
             android:textColorHint="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:background="@drawable/shape_stroke_white_18dp"
-            android:padding="16dp"
-            android:text="意"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
     </LinearLayout>
-
 
     <TextView
         android:layout_width="match_parent"
@@ -86,7 +91,7 @@
         android:layout_marginRight="40dp"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="解释：多用祝颂他人美满称心......"
+        android:text="解释：老朋友预备了丰盛的饭菜.........."
         android:textColor="@color/black"
         android:textSize="20dp"/>
 
