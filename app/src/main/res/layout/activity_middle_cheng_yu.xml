@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="中学成语"
+        android:text="初中成语"
         android:textColor="@color/red_common_pure"
         android:textSize="28sp"
         android:textStyle="bold"/>

@@ -2,6 +2,19 @@
 <manifest package="cool.chinalanguagegame.android"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--允许联网 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--获取wifi网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!--获取sd卡写的权限，用于文件上传和下载-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--允许读取手机状态 用于创建BmobInstallation-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <application
         android:name=".base.CCApplication"
         android:allowBackup="true"
@@ -10,33 +23,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="cool.chinalanguagegame.android.BmobContentProvider">
+        </provider>
+
+        <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WelcomeActivity">
-        </activity>
-        <activity android:name=".activity.LoginActivity">
-        </activity>
-        <activity android:name=".activity.RegisterActivity">
-        </activity>
-        <activity android:name=".activity.StoreActivity">
-        </activity>
-        <activity android:name=".activity.SelectGameActivity">
-        </activity>
-        <activity android:name=".activity.PlayGameActivity">
-        </activity>
-        <activity android:name=".activity.GameOverActivity">
-        </activity>
-        <activity android:name=".activity.SmallChiActivity">
-        </activity>
-        <activity android:name=".activity.MiddleChengYuActivity">
-        </activity>
-        <activity android:name=".activity.MiddleChiActivity">
-        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.StoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.SelectGameActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.PlayGameActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.GameOverActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.SmallChiActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.MiddleChengYuActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.MiddleChiActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.SmallChengYuActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

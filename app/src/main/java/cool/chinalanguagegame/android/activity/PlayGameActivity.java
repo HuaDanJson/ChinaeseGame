@@ -1,11 +1,11 @@
 package cool.chinalanguagegame.android.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import cool.chinalanguagegame.android.R;
+import cool.chinalanguagegame.android.base.BaseActivity;
 
-public class PlayGameActivity extends AppCompatActivity {
+public class PlayGameActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
