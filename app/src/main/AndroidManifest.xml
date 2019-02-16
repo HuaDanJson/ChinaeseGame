@@ -3,38 +3,39 @@
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
+        android:name=".base.CCApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".activity.WelcomeActivity">
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activity.LoginActivity">
         </activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".activity.RegisterActivity">
         </activity>
-        <activity android:name=".StoreActivity">
+        <activity android:name=".activity.StoreActivity">
         </activity>
-        <activity android:name=".SelectGameActivity">
+        <activity android:name=".activity.SelectGameActivity">
         </activity>
-        <activity android:name=".PlayGameActivity">
+        <activity android:name=".activity.PlayGameActivity">
         </activity>
-        <activity android:name=".GameOverActivity">
+        <activity android:name=".activity.GameOverActivity">
         </activity>
-        <activity android:name=".SmallChiActivity">
+        <activity android:name=".activity.SmallChiActivity">
         </activity>
-        <activity android:name=".MiddleChengYuActivity">
+        <activity android:name=".activity.MiddleChengYuActivity">
         </activity>
-        <activity android:name=".MiddleChiActivity">
+        <activity android:name=".activity.MiddleChiActivity">
         </activity>
     </application>
 

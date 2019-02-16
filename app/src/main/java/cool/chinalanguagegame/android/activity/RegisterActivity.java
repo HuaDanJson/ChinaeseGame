@@ -1,7 +1,9 @@
-package cool.chinalanguagegame.android;
+package cool.chinalanguagegame.android.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import cool.chinalanguagegame.android.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
