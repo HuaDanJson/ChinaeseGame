@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    android:orientation="vertical"
+    tools:context=".activity.LoginActivity">
+
+    <TextView
+        android:id="@+id/tv_question_input_game_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp16"
+        android:layout_marginRight="@dimen/dp16"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Title"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/edt_input_answer_input_game_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:hint="请输入答案"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black75"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:id="@+id/tv_note_input_game_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp16"
+        android:layout_marginRight="@dimen/dp16"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="解释"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_behind_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="上一题"/>
+
+        <Button
+            android:id="@+id/btn_next_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="下一题"/>
+
+    </LinearLayout>
+
+</LinearLayout>
