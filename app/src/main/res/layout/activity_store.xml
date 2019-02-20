@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg"
+    android:background="@drawable/icon_1161"
     android:orientation="vertical"
     tools:context=".activity.LoginActivity">
 
@@ -44,20 +44,23 @@
         android:paddingLeft="16dp">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/icon_1154"
             android:text="商品1"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_1154"
             android:text="价格：10分"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_1154"
             android:text="点击购买"/>
 
     </LinearLayout>
@@ -76,20 +79,23 @@
         android:paddingLeft="16dp">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/icon_1154"
             android:text="商品2"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_1154"
             android:text="价格：20分"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_1154"
             android:text="点击购买"/>
 
     </LinearLayout>
@@ -109,20 +115,23 @@
         android:paddingLeft="16dp">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/icon_1154"
             android:text="商品3"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_1154"
             android:text="价格：30分"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_1154"
             android:text="点击购买"/>
 
     </LinearLayout>
@@ -142,20 +151,23 @@
         android:paddingLeft="16dp">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/icon_1154"
             android:text="商品4"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_1154"
             android:text="价格：40分"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/icon_1154"
             android:text="点击购买"/>
 
     </LinearLayout>

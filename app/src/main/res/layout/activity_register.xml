@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg"
+    android:background="@drawable/icon_welcom"
     android:orientation="vertical"
     tools:context=".activity.LoginActivity">
 
@@ -39,9 +39,12 @@
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
+        android:background="@drawable/icon_1154"
         android:text="点击注册"/>
 
 </LinearLayout>

@@ -36,10 +36,11 @@
     <TextView
         android:id="@+id/tv_note_input_game_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginLeft="@dimen/dp16"
         android:layout_marginRight="@dimen/dp16"
         android:layout_marginTop="30dp"
+        android:background="@drawable/icon_1154"
         android:gravity="center"
         android:text="解释"
         android:textSize="18sp"/>
