@@ -6,7 +6,6 @@ import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseActivity;
 
 public class MiddleChiActivity extends BaseActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
