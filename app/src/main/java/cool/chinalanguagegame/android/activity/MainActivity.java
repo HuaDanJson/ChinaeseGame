@@ -13,12 +13,14 @@ import cn.bmob.v3.BmobUser;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseActivity;
 import cool.chinalanguagegame.android.bean.CurrentUser;
+import cool.chinalanguagegame.android.utils.ToastHelper;
 
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.btn_game) Button btnGame;
     @BindView(R.id.btn_store) Button btnStore;
     @BindView(R.id.btn_logout) Button btnLogout;
+    private long firstBack = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,5 +47,15 @@ public class MainActivity extends BaseActivity {
         BmobUser.logOut();
         toActivity(LoginActivity.class);
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - firstBack < 2000) {
+            super.onBackPressed();
+        } else {
+            firstBack = System.currentTimeMillis();
+            ToastHelper.showShortMessage(R.string.back_btn_exit_pop);
+        }
     }
 }

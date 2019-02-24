@@ -8,6 +8,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseActivity;
+import cool.chinalanguagegame.android.utils.ActivityUtil;
 
 public class SelectGameActivity extends BaseActivity {
 
@@ -25,21 +26,25 @@ public class SelectGameActivity extends BaseActivity {
 
     @OnClick(R.id.btn_primary_words)
     public void primaryWordsClicked() {
-        toActivity(SmallChengYuActivity.class);
+        //小学成语
+        ActivityUtil.startSelectGameInfoActivity(this, 1);
     }
 
     @OnClick(R.id.btn_primary_poetry)
     public void primaryPoetryClicked() {
-        toActivity(SmallChiActivity.class);
+        //小学诗词
+        ActivityUtil.startSelectGameInfoActivity(this, 2);
     }
 
     @OnClick(R.id.btn_middle_words)
     public void middleWordsClicked() {
-        toActivity(MiddleChengYuActivity.class);
+        //初中成语
+        ActivityUtil.startSelectGameInfoActivity(this, 3);
     }
 
     @OnClick(R.id.btn_middle_poetry)
     public void middlePoetryClicked() {
-        toActivity(MiddleChiActivity.class);
+        //初中诗词
+        ActivityUtil.startSelectGameInfoActivity(this, 4);
     }
 }

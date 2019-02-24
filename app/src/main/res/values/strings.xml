@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ChinaeseGame</string>
+    <string name="app_name">汉字游戏</string>
+    <string name="back_btn_exit_pop">再按一次返回键退出</string>
 </resources>
