@@ -2,8 +2,7 @@ package cool.chinalanguagegame.android.bean;
 
 import cn.bmob.v3.BmobObject;
 
-//初中成语
-public class MiddleWords extends BmobObject {
+public class InputGameBean extends BmobObject {
 
     private String question;
     private String answer;
@@ -33,17 +32,9 @@ public class MiddleWords extends BmobObject {
         this.note = note;
     }
 
-    public InputGameBean getInputGameBean() {
-        InputGameBean inputGameBean = new InputGameBean();
-        inputGameBean.setAnswer(answer);
-        inputGameBean.setQuestion(question);
-        inputGameBean.setNote(note);
-        return inputGameBean;
-    }
-
     @Override
     public String toString() {
-        return "MiddleWords{" +
+        return "InputGameBean{" +
                 "question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
                 ", note='" + note + '\'' +

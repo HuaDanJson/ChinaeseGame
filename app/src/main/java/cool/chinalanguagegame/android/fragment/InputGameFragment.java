@@ -15,7 +15,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseFragment;
-import cool.chinalanguagegame.android.bean.PrimaryWords;
+import cool.chinalanguagegame.android.bean.InputGameBean;
 
 public class InputGameFragment extends BaseFragment implements View.OnTouchListener {
 
@@ -26,7 +26,7 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
     @BindView(R.id.btn_next_question) Button mNextQuestion;
     public InputGameFragmentListener mListener;
     private int mPosition;
-    private PrimaryWords mPrimaryWords;
+    private InputGameBean mInputGameBean;
     Unbinder unbinder;
 
     @Override
@@ -44,9 +44,9 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
     }
 
     public void initView() {
-        if (mPrimaryWords != null) {
-            mQuestiont.setText(mPosition + "." + mPrimaryWords.getQuestion());
-            mNote.setText("解释：" + mPrimaryWords.getNote());
+        if (mInputGameBean != null) {
+            mQuestiont.setText((mPosition + 1) + "." + mInputGameBean.getQuestion());
+            mNote.setText("解释：" + mInputGameBean.getNote());
         }
     }
 
@@ -56,9 +56,9 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
         unbinder.unbind();
     }
 
-    public void setData(int position, PrimaryWords primaryWords) {
+    public void setData(int position, InputGameBean inputGameBean) {
         this.mPosition = position;
-        this.mPrimaryWords = primaryWords;
+        this.mInputGameBean = inputGameBean;
     }
 
     @Override

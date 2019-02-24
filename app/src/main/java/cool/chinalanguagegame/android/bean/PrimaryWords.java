@@ -41,4 +41,12 @@ public class PrimaryWords extends BmobObject {
                 ", note='" + note + '\'' +
                 '}';
     }
+
+    public InputGameBean getInputGameBean() {
+        InputGameBean inputGameBean = new InputGameBean();
+        inputGameBean.setAnswer(answer);
+        inputGameBean.setQuestion(question);
+        inputGameBean.setNote(note);
+        return inputGameBean;
+    }
 }

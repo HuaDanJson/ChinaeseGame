@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/icon_1161"
     android:orientation="vertical"
     tools:context=".activity.PlayInputGameActivity">
 
@@ -18,5 +19,12 @@
         android:textColor="@color/red_common_pure"
         android:textSize="28sp"
         android:textStyle="bold"/>
+
+    <cool.chinalanguagegame.android.view.CustomViewPager
+        android:id="@+id/cvg_play_input_game_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </cool.chinalanguagegame.android.view.CustomViewPager>
 
 </LinearLayout>

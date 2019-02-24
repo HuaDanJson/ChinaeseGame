@@ -19,4 +19,12 @@
         android:textSize="28sp"
         android:textStyle="bold"/>
 
+    <cool.chinalanguagegame.android.view.CustomViewPager
+        android:id="@+id/cvg_play_select_game_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </cool.chinalanguagegame.android.view.CustomViewPager>
+
+
 </LinearLayout>

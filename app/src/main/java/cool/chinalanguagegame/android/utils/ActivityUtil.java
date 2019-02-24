@@ -3,12 +3,16 @@ package cool.chinalanguagegame.android.utils;
 import android.app.Activity;
 import android.content.Intent;
 
+import java.io.Serializable;
+import java.util.List;
+
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.activity.PlayInputGameActivity;
 import cool.chinalanguagegame.android.activity.PlaySelectGameActivity;
 import cool.chinalanguagegame.android.activity.SelectGameInfoActivity;
 import cool.chinalanguagegame.android.activity.SelectInputGameActivity;
 import cool.chinalanguagegame.android.activity.SelectSelectActivity;
+import cool.chinalanguagegame.android.bean.InputGameBean;
 import cool.chinalanguagegame.android.constants.AppConstant;
 
 public class ActivityUtil {
@@ -46,11 +50,12 @@ public class ActivityUtil {
         activity.overridePendingTransition(R.anim.enter_from_right, R.anim.slide_in_from_middle_to_middle);
     }
 
-    public static void startPlayInputGameActivity(Activity activity, int type, int starCount) {
+    public static void startPlayInputGameActivity(Activity activity, int type, int starCount, List<InputGameBean> inputGameBeanList) {
         if (activity == null) { return; }
         Intent intent = new Intent(activity, PlayInputGameActivity.class);
         intent.putExtra(AppConstant.IntentKey.EXTRA_TYPE, type);
         intent.putExtra(AppConstant.IntentKey.EXTRA_STAR, starCount);
+        intent.putExtra(AppConstant.IntentKey.EXTRA_DATA, (Serializable) inputGameBeanList);
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.enter_from_right, R.anim.slide_in_from_middle_to_middle);
     }

@@ -33,6 +33,14 @@ public class MiddlePoetry extends BmobObject {
         this.note = note;
     }
 
+    public InputGameBean getInputGameBean() {
+        InputGameBean inputGameBean = new InputGameBean();
+        inputGameBean.setAnswer(answer);
+        inputGameBean.setQuestion(question);
+        inputGameBean.setNote(note);
+        return inputGameBean;
+    }
+
     @Override
     public String toString() {
         return "MiddlePoetry{" +
