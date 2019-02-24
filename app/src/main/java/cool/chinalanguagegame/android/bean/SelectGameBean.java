@@ -2,8 +2,7 @@ package cool.chinalanguagegame.android.bean;
 
 import cn.bmob.v3.BmobObject;
 
-//小学诗词选择
-public class PrimaryPoetrySelect extends BmobObject {
+public class SelectGameBean extends BmobObject {
 
     private String question;
     private String answer;
@@ -60,21 +59,17 @@ public class PrimaryPoetrySelect extends BmobObject {
         this.selectC = selectC;
     }
 
-    public SelectGameBean getSelectGameBean() {
-        SelectGameBean selectGameBean = new SelectGameBean();
-        selectGameBean.setQuestion(question);
-        selectGameBean.setAnswer(answer);
-        selectGameBean.setNote(note);
-        selectGameBean.setSelectA(selectA);
-        selectGameBean.setSelectB(selectB);
-        selectGameBean.setSelectC(selectC);
-        return selectGameBean;
+    public InputGameBean getInputGameBean() {
+        InputGameBean inputGameBean = new InputGameBean();
+        inputGameBean.setAnswer(answer);
+        inputGameBean.setQuestion(question);
+        inputGameBean.setNote(note);
+        return inputGameBean;
     }
-
 
     @Override
     public String toString() {
-        return "PrimaryPoetrySelect{" +
+        return "SelectGameBean{" +
                 "question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
                 ", note='" + note + '\'' +

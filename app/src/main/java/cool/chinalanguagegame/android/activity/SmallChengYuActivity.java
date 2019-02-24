@@ -83,7 +83,7 @@ public class SmallChengYuActivity extends BaseActivity implements InputGameFragm
         if (primaryWordsSelectSize > 0) {
             for (int i = 0; i < primaryWordsSelectSize; i++) {
                 SelectGameFragment selectGameActivity = new SelectGameFragment();
-                selectGameActivity.setData(primaryWordSize + i + 1, mPrimaryWordsSelectList.get(i));
+                selectGameActivity.setData(primaryWordSize + i + 1, null);
                 mExameFragmentList.add(selectGameActivity);
             }
         }

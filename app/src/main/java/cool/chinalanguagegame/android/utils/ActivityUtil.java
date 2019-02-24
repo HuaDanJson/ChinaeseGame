@@ -14,6 +14,7 @@ import cool.chinalanguagegame.android.activity.SelectGameInfoActivity;
 import cool.chinalanguagegame.android.activity.SelectInputGameActivity;
 import cool.chinalanguagegame.android.activity.SelectSelectActivity;
 import cool.chinalanguagegame.android.bean.InputGameBean;
+import cool.chinalanguagegame.android.bean.SelectGameBean;
 import cool.chinalanguagegame.android.constants.AppConstant;
 
 public class ActivityUtil {
@@ -71,11 +72,12 @@ public class ActivityUtil {
         activity.finish();
     }
 
-    public static void startPlaySelectGameActivity(Activity activity, int type, int starCount) {
+    public static void startPlaySelectGameActivity(Activity activity, int type, int starCount, List<SelectGameBean> selectGameBeanList) {
         if (activity == null) { return; }
         Intent intent = new Intent(activity, PlaySelectGameActivity.class);
         intent.putExtra(AppConstant.IntentKey.EXTRA_TYPE, type);
         intent.putExtra(AppConstant.IntentKey.EXTRA_STAR, starCount);
+        intent.putExtra(AppConstant.IntentKey.EXTRA_DATA, (Serializable) selectGameBeanList);
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.enter_from_right, R.anim.slide_in_from_middle_to_middle);
     }

@@ -51,11 +51,11 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
         setContentView(R.layout.activity_play_input_game);
         ButterKnife.bind(this);
         Intent intent = getIntent();
-        if (intent == null) {onBackPressed();}
+        if (intent == null) {finish();}
         mType = intent.getIntExtra(AppConstant.IntentKey.EXTRA_TYPE, 0);
         mStarCount = intent.getIntExtra(AppConstant.IntentKey.EXTRA_STAR, 0);
         if (mType <= 0 || mStarCount <= 0) {
-            onBackPressed();
+            finish();
         }
         switch (mType) {
             case 1:

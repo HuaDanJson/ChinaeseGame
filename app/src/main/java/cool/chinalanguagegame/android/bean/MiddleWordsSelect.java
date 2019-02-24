@@ -60,6 +60,18 @@ public class MiddleWordsSelect extends BmobObject {
         this.selectC = selectC;
     }
 
+    public SelectGameBean getSelectGameBean() {
+        SelectGameBean selectGameBean = new SelectGameBean();
+        selectGameBean.setQuestion(question);
+        selectGameBean.setAnswer(answer);
+        selectGameBean.setNote(note);
+        selectGameBean.setSelectA(selectA);
+        selectGameBean.setSelectB(selectB);
+        selectGameBean.setSelectC(selectC);
+        return selectGameBean;
+    }
+
+
     @Override
     public String toString() {
         return "MiddleWordsSelect{" +
@@ -71,4 +83,5 @@ public class MiddleWordsSelect extends BmobObject {
                 ", selectC='" + selectC + '\'' +
                 '}';
     }
+
 }

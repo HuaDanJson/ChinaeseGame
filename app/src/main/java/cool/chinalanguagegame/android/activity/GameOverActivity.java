@@ -55,8 +55,10 @@ public class GameOverActivity extends BaseActivity {
         clickedCount++;
         if (clickedCount % 2 == 1) {
             initRecyclerView();
+            btnCheckAllData.setText("关闭查看解析");
         } else {
             mRecyclerView.setVisibility(View.GONE);
+            btnCheckAllData.setText("查看解析");
         }
     }
 
