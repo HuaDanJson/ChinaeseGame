@@ -35,7 +35,7 @@
     <TextView
         android:id="@+id/tv_note_input_game_fragment"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp16"
         android:layout_marginRight="@dimen/dp16"
         android:layout_marginTop="30dp"
@@ -51,22 +51,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_behind_question"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_tool_question"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="上一题"/>
+            android:text="道具"/>
+
+        <Button
+            android:id="@+id/btn_sure_question"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="确认"/>
 
         <Button
             android:id="@+id/btn_next_question"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="下一题"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_right_answer_input_game_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp16"
+        android:layout_marginRight="@dimen/dp16"
+        android:gravity="center"
+        android:text="正确答案"
+        android:textSize="18sp"
+        android:visibility="gone"/>
 
 </LinearLayout>

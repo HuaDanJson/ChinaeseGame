@@ -181,6 +181,7 @@ public final class AppConstant {
         public static final String EXTRA_TIMESTAMP = "timeStamp";
         public static final String EXTRA_TYPE = "type";
         public static final String EXTRA_STAR = "star";
+        public static final String EXTRA_SCORE = "score";
         public static final String EXTRA_PAGE_NUMBER = "pageNum";
         public static final String EXTRA_BOOL = "bool";
         public static final String INTENT_KEY_VIDEO_INFO = "INTENT_KEY_VIDEO_INFO";

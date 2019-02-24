@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -19,13 +21,20 @@ import cool.chinalanguagegame.android.base.BaseActivity;
 import cool.chinalanguagegame.android.bean.InputGameBean;
 import cool.chinalanguagegame.android.constants.AppConstant;
 import cool.chinalanguagegame.android.fragment.InputGameFragment;
+import cool.chinalanguagegame.android.utils.ActivityUtil;
 import cool.chinalanguagegame.android.utils.ToastHelper;
 import cool.chinalanguagegame.android.view.CustomViewPager;
 
 public class PlayInputGameActivity extends BaseActivity implements InputGameFragment.InputGameFragmentListener {
 
     @BindView(R.id.tv_title) TextView mTitle;
+    @BindView(R.id.tv_score_play_input_game) TextView mScoreTextView;
     @BindView(R.id.cvg_play_input_game_activity) CustomViewPager mCustomViewPager;
+    @BindView(R.id.iv_star1) ImageView ivStar1;
+    @BindView(R.id.iv_star2) ImageView ivStar2;
+    @BindView(R.id.iv_star3) ImageView ivStar3;
+    @BindView(R.id.iv_star4) ImageView ivStar4;
+    @BindView(R.id.iv_star5) ImageView ivStar5;
 
     private int mType;
     private int mStarCount;
@@ -33,6 +42,8 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
     private PlayInputGameViewPageAdapter mPlayInputGameAdapter;
     private List<InputGameBean> mInputGameBeanList = new ArrayList<>();
     private List<Fragment> mInputFragmentList = new ArrayList<>();
+    private long firstBack = -1;
+    private int mAllScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +82,46 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
                 break;
         }
 
+        switch (mStarCount) {
+            case 1:
+                ivStar1.setVisibility(View.VISIBLE);
+                ivStar2.setVisibility(View.GONE);
+                ivStar3.setVisibility(View.GONE);
+                ivStar4.setVisibility(View.GONE);
+                ivStar5.setVisibility(View.GONE);
+                break;
+            case 2:
+                ivStar1.setVisibility(View.VISIBLE);
+                ivStar2.setVisibility(View.VISIBLE);
+                ivStar3.setVisibility(View.GONE);
+                ivStar4.setVisibility(View.GONE);
+                ivStar5.setVisibility(View.GONE);
+                break;
+            case 3:
+                ivStar1.setVisibility(View.VISIBLE);
+                ivStar2.setVisibility(View.VISIBLE);
+                ivStar3.setVisibility(View.VISIBLE);
+                ivStar4.setVisibility(View.GONE);
+                ivStar5.setVisibility(View.GONE);
+                break;
+            case 4:
+                ivStar1.setVisibility(View.VISIBLE);
+                ivStar2.setVisibility(View.VISIBLE);
+                ivStar3.setVisibility(View.VISIBLE);
+                ivStar4.setVisibility(View.VISIBLE);
+                ivStar5.setVisibility(View.GONE);
+                break;
+            case 5:
+                ivStar1.setVisibility(View.VISIBLE);
+                ivStar2.setVisibility(View.VISIBLE);
+                ivStar3.setVisibility(View.VISIBLE);
+                ivStar4.setVisibility(View.VISIBLE);
+                ivStar5.setVisibility(View.VISIBLE);
+                break;
+            default:
+                break;
+        }
         initStateTwoViewPager();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-        overridePendingTransition(R.anim.exit_stop_original_place, R.anim.exit_to_right);
     }
 
     public void initStateTwoViewPager() {
@@ -98,8 +141,9 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
     }
 
     @Override
-    public void onInputGameFragmentBehindClicked(int position) {
-
+    public void onAnswerRight() {
+        mAllScore = mAllScore + 2;
+        mScoreTextView.setText("本关得分：" + String.valueOf(mAllScore));
     }
 
     @Override
@@ -107,11 +151,21 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
         LogUtils.d("PlayInputGameActivity onInputGameFragmentNextClicked position : " + position);
         int allData = mInputFragmentList.size();
         if (position == (allData - 1)) {
-            ToastHelper.showShortMessage("这是最后一道题");
+            ActivityUtil.startGameOverActivity(this, mAllScore, mInputGameBeanList);
             return;
         }
         if ((mCustomViewPager != null) && (position >= 0) && (position < (allData - 1))) {
             mCustomViewPager.setCurrentItem(position + 1);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - firstBack < 2000) {
+            super.onBackPressed();
+        } else {
+            firstBack = System.currentTimeMillis();
+            ToastHelper.showShortMessage(R.string.back_btn_exit_game);
         }
     }
 
@@ -131,6 +185,4 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
             return mInputFragmentList.size();
         }
     }
-
-
 }

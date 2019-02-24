@@ -94,10 +94,8 @@ public class SmallChengYuActivity extends BaseActivity implements InputGameFragm
     }
 
     @Override
-    public void onInputGameFragmentBehindClicked(int position) {
-        if (mViewPager != null && position > 1) {
-            mViewPager.setCurrentItem(position - 2);
-        }
+    public void onAnswerRight() {
+
     }
 
     @Override

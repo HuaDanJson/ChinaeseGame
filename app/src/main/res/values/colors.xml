@@ -153,5 +153,5 @@
     <color name="origin85">#d9FF8C00</color>
     <color name="origin87">#DEFF8C00</color>
     <color name="origin90">#e5FF8C00</color>
-
+    <color name="line_color">#D8D8D8</color>
 </resources>

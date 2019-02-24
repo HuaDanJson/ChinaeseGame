@@ -1,6 +1,7 @@
 package cool.chinalanguagegame.android.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,14 +17,17 @@ import butterknife.Unbinder;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseFragment;
 import cool.chinalanguagegame.android.bean.InputGameBean;
+import cool.chinalanguagegame.android.utils.ToastHelper;
 
 public class InputGameFragment extends BaseFragment implements View.OnTouchListener {
 
     @BindView(R.id.tv_question_input_game_fragment) TextView mQuestiont;
     @BindView(R.id.edt_input_answer_input_game_fragment) EditText mInputEditText;
     @BindView(R.id.tv_note_input_game_fragment) TextView mNote;
-    @BindView(R.id.btn_behind_question) Button mBehindQuestion;
+    @BindView(R.id.tv_right_answer_input_game_fragment) TextView mRightAnswer;
     @BindView(R.id.btn_next_question) Button mNextQuestion;
+    @BindView(R.id.btn_sure_question) Button mSure;
+    @BindView(R.id.btn_tool_question) Button mTools;
     public InputGameFragmentListener mListener;
     private int mPosition;
     private InputGameBean mInputGameBean;
@@ -66,15 +70,39 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
         return true;
     }
 
-    @OnClick(R.id.btn_behind_question)
-    public void onBehindClicked() {
-        if (mListener != null) {
-            mListener.onInputGameFragmentBehindClicked(mPosition);
+    @OnClick(R.id.btn_sure_question)
+    public void onSureClicked() {
+        if (mInputEditText == null) { return; }
+        if (mRightAnswer.getVisibility() == View.VISIBLE) {
+            ToastHelper.showShortMessage("已经回答完该题目");
+            return;
         }
+        String answerText = mInputEditText.getText().toString();
+        if (TextUtils.isEmpty(answerText)) {
+            ToastHelper.showShortMessage("请填写答案后再点击确认");
+            return;
+        }
+
+        if (answerText.equals(mInputGameBean.getAnswer())) {
+            mListener.onAnswerRight();
+            mRightAnswer.setText("恭喜您回答正确");
+        } else {
+            mRightAnswer.setText("回答错误 \n正确答案：" + mInputGameBean.getAnswer());
+        }
+        mRightAnswer.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.btn_next_question)
     public void onNextClicked() {
+        String answerText = mInputEditText.getText().toString();
+        if (TextUtils.isEmpty(answerText)) {
+            ToastHelper.showShortMessage("请填写答案后再进入下一题");
+            return;
+        }
+        if (mRightAnswer.getVisibility() == View.GONE) {
+            ToastHelper.showShortMessage("请点击确认后再进入下一题");
+            return;
+        }
         if (mListener != null) {
             mListener.onInputGameFragmentNextClicked(mPosition);
         }
@@ -82,7 +110,7 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
 
     public interface InputGameFragmentListener {
 
-        void onInputGameFragmentBehindClicked(int position);
+        void onAnswerRight();
 
         void onInputGameFragmentNextClicked(int position);
 

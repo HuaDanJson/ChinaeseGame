@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import cool.chinalanguagegame.android.R;
+import cool.chinalanguagegame.android.activity.GameOverActivity;
 import cool.chinalanguagegame.android.activity.PlayInputGameActivity;
 import cool.chinalanguagegame.android.activity.PlaySelectGameActivity;
 import cool.chinalanguagegame.android.activity.SelectGameInfoActivity;
@@ -58,6 +59,16 @@ public class ActivityUtil {
         intent.putExtra(AppConstant.IntentKey.EXTRA_DATA, (Serializable) inputGameBeanList);
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.enter_from_right, R.anim.slide_in_from_middle_to_middle);
+    }
+
+    public static void startGameOverActivity(Activity activity, int score, List<InputGameBean> inputGameBeanList) {
+        if (activity == null) { return; }
+        Intent intent = new Intent(activity, GameOverActivity.class);
+        intent.putExtra(AppConstant.IntentKey.EXTRA_SCORE, score);
+        intent.putExtra(AppConstant.IntentKey.EXTRA_DATA, (Serializable) inputGameBeanList);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(R.anim.enter_from_right, R.anim.slide_in_from_middle_to_middle);
+        activity.finish();
     }
 
     public static void startPlaySelectGameActivity(Activity activity, int type, int starCount) {
