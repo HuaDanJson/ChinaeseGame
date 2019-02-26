@@ -22,9 +22,10 @@ import butterknife.Unbinder;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseFragment;
 import cool.chinalanguagegame.android.bean.InputGameBean;
+import cool.chinalanguagegame.android.dialog.ToolsDialog;
 import cool.chinalanguagegame.android.utils.ToastHelper;
 
-public class InputGameFragment extends BaseFragment implements View.OnTouchListener {
+public class InputGameFragment extends BaseFragment implements View.OnTouchListener, ToolsDialog.ToolsDialogListener {
 
     @BindView(R.id.tv_question_input_game_fragment) TextView mQuestiont;
     @BindView(R.id.edt_input_answer_input_game_fragment) EditText mInputEditText;
@@ -37,6 +38,10 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
     public InputGameFragmentListener mListener;
     private int mPosition;
     private InputGameBean mInputGameBean;
+    private ToolsDialog mToolsDialog;
+    private boolean isClickedDouble;
+    private boolean isClickedCover;
+    private boolean isClickedHelper;
     Unbinder unbinder;
 
     @Override
@@ -90,7 +95,7 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
         }
 
         if (answerText.equals(mInputGameBean.getAnswer())) {
-            mListener.onAnswerRight();
+            mListener.onAnswerRight(isClickedDouble);
             mRightAnswer.setText("恭喜您回答正确");
         } else {
             mRightAnswer.setText("回答错误 \n正确答案：" + mInputGameBean.getAnswer());
@@ -124,11 +129,45 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
         }
     }
 
+    @OnClick(R.id.btn_tool_question)
+    public void onToolsClicked() {
+        if (mToolsDialog == null) {
+            mToolsDialog = new ToolsDialog();
+        }
+        mToolsDialog.setToolsDialogListener(this);
+        mToolsDialog.setData(isClickedHelper, isClickedDouble, isClickedCover);
+        mToolsDialog.tryShow(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void onHelperCardClicked() {
+        isClickedHelper = true;
+        mInputEditText.setText(mInputGameBean.getAnswer());
+        mListener.onAnswerRight(false);
+        mRightAnswer.setText("恭喜您回答正确");
+        mRightAnswer.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onDoubleCardClicked() {
+        isClickedDouble = true;
+    }
+
+    @Override
+    public void onCoverCardClicked() {
+        isClickedCover = true;
+        if (mListener != null) {
+            mListener.onCoverCardClicked();
+        }
+    }
+
     public interface InputGameFragmentListener {
 
-        void onAnswerRight();
+        void onAnswerRight(boolean isClickDouble);
 
         void onInputGameFragmentNextClicked(int position);
+
+        void onCoverCardClicked();
 
     }
 

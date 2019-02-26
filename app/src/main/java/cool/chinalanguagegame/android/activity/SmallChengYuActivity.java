@@ -93,8 +93,9 @@ public class SmallChengYuActivity extends BaseActivity implements InputGameFragm
         mViewPager.setCurrentItem(0);
     }
 
+
     @Override
-    public void onAnswerRight() {
+    public void onAnswerRight(boolean isClickDouble) {
 
     }
 
@@ -108,6 +109,11 @@ public class SmallChengYuActivity extends BaseActivity implements InputGameFragm
         if (mViewPager != null && position > 0 && position < allData) {
             mViewPager.setCurrentItem(position);
         }
+    }
+
+    @Override
+    public void onCoverCardClicked() {
+
     }
 
     class GameAdapter extends FragmentPagerAdapter {

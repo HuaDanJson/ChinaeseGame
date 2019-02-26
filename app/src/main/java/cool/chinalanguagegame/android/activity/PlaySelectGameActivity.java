@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -27,6 +28,7 @@ import cool.chinalanguagegame.android.constants.AppConstant;
 import cool.chinalanguagegame.android.fragment.SelectGameFragment;
 import cool.chinalanguagegame.android.utils.ActivityUtil;
 import cool.chinalanguagegame.android.utils.CurrentUserHelper;
+import cool.chinalanguagegame.android.utils.ResourceUtil;
 import cool.chinalanguagegame.android.utils.ToastHelper;
 import cool.chinalanguagegame.android.view.CustomViewPager;
 
@@ -40,6 +42,7 @@ public class PlaySelectGameActivity extends BaseActivity implements SelectGameFr
     @BindView(R.id.iv_star3) ImageView ivStar3;
     @BindView(R.id.iv_star4) ImageView ivStar4;
     @BindView(R.id.iv_star5) ImageView ivStar5;
+    @BindView(R.id.ll_all_play_select_game_activity) LinearLayout mALLLinearLayout;
     private int mType;
     private int mStarCount;
 
@@ -151,25 +154,6 @@ public class PlaySelectGameActivity extends BaseActivity implements SelectGameFr
     }
 
     @Override
-    public void onAnswerRight() {
-        mAllScore = mAllScore + 2;
-        tvScorePlaySelectGame.setText("本关得分：" + String.valueOf(mAllScore));
-        mCurrentUser.setScore(mCurrentUser.getScore() + 2);
-        CurrentUserHelper.getInstance().updateCurrentUser(mCurrentUser);
-        mCurrentUser.setScore(mCurrentUser.getScore());
-        mCurrentUser.update(new UpdateListener() {
-            @Override
-            public void done(BmobException e) {
-                if (e == null) {
-                    LogUtils.d("PlaySelectGameActivity onAnswerRight 33  update Score success");
-                } else {
-                    LogUtils.d("PlaySelectGameActivity onAnswerRight 44 pdate Score failed : " + e.getMessage());
-                }
-            }
-        });
-    }
-
-    @Override
     public void onInputGameFragmentNextClicked(int position) {
         LogUtils.d("PlayInputGameActivity onInputGameFragmentNextClicked position : " + position);
         int allData = mSelectFragmentList.size();
@@ -185,6 +169,36 @@ public class PlaySelectGameActivity extends BaseActivity implements SelectGameFr
         if ((mCustomViewPager != null) && (position >= 0) && (position < (allData - 1))) {
             mCustomViewPager.setCurrentItem(position + 1);
         }
+    }
+
+    @Override
+    public void onAnswerRight(boolean isClickDouble) {
+        if (isClickDouble) {
+            mAllScore = mAllScore + 4;
+            mCurrentUser.setScore(mCurrentUser.getScore() + 4);
+        } else {
+            mAllScore = mAllScore + 2;
+            mCurrentUser.setScore(mCurrentUser.getScore() + 2);
+        }
+        tvScorePlaySelectGame.setText("本关得分：" + String.valueOf(mAllScore));
+        CurrentUserHelper.getInstance().updateCurrentUser(mCurrentUser);
+        mCurrentUser.setScore(mCurrentUser.getScore());
+        mCurrentUser.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    LogUtils.d("PlaySelectGameActivity onAnswerRight 33  update Score success");
+                } else {
+                    LogUtils.d("PlaySelectGameActivity onAnswerRight 44 pdate Score failed : " + e.getMessage());
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onCoverCardClicked() {
+        if (mALLLinearLayout == null) {return;}
+        mALLLinearLayout.setBackground(ResourceUtil.getDrawable(R.drawable.icon_welcom));
     }
 
     class PlaySelectGameViewPageAdapter extends FragmentPagerAdapter {

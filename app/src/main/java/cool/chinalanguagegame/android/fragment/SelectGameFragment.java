@@ -16,12 +16,13 @@ import butterknife.Unbinder;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseFragment;
 import cool.chinalanguagegame.android.bean.SelectGameBean;
+import cool.chinalanguagegame.android.dialog.ToolsDialog;
 import cool.chinalanguagegame.android.utils.ToastHelper;
 
-public class SelectGameFragment extends BaseFragment implements View.OnTouchListener {
+public class SelectGameFragment extends BaseFragment implements View.OnTouchListener, ToolsDialog.ToolsDialogListener {
 
     @BindView(R.id.tv_question_select_game_fragment) TextView tvQuestionSelectGameFragment;
-    @BindView(R.id.btn_answer_a) TextView  btnAnswerA;
+    @BindView(R.id.btn_answer_a) TextView btnAnswerA;
     @BindView(R.id.btn_answer_b) TextView btnAnswerB;
     @BindView(R.id.btn_answer_c) TextView btnAnswerC;
     @BindView(R.id.tv_note_select_game_fragment) TextView tvNoteSelectGameFragment;
@@ -33,6 +34,10 @@ public class SelectGameFragment extends BaseFragment implements View.OnTouchList
     private int mPosition;
     private SelectGameBean mSelectGameBean;
     public SelectGameFragmentListener mListener;
+    private ToolsDialog mToolsDialog;
+    private boolean isClickedDouble;
+    private boolean isClickedCover;
+    private boolean isClickedHelper;
     Unbinder unbinder;
 
     @Override
@@ -77,9 +82,11 @@ public class SelectGameFragment extends BaseFragment implements View.OnTouchList
 
     public interface SelectGameFragmentListener {
 
-        void onAnswerRight();
-
         void onInputGameFragmentNextClicked(int position);
+
+        void onAnswerRight(boolean isClickDouble);
+
+        void onCoverCardClicked();
 
     }
 
@@ -123,7 +130,6 @@ public class SelectGameFragment extends BaseFragment implements View.OnTouchList
         }
     }
 
-
     @OnClick(R.id.btn_sure_question)
     public void onSureClicked() {
         if (btnAnswerA == null) { return; }
@@ -149,7 +155,7 @@ public class SelectGameFragment extends BaseFragment implements View.OnTouchList
         }
 
         if (answerText.equals(mSelectGameBean.getAnswer())) {
-            mListener.onAnswerRight();
+            mListener.onAnswerRight(isClickedDouble);
             mRightAnswer.setText("恭喜您回答正确");
         } else {
             mRightAnswer.setText("回答错误 \n正确答案：" + mSelectGameBean.getAnswer());
@@ -184,6 +190,51 @@ public class SelectGameFragment extends BaseFragment implements View.OnTouchList
         }
         if (mListener != null) {
             mListener.onInputGameFragmentNextClicked(mPosition);
+        }
+    }
+
+    @OnClick(R.id.btn_tool_question)
+    public void onToolsClicked() {
+        if (mToolsDialog == null) {
+            mToolsDialog = new ToolsDialog();
+        }
+        mToolsDialog.setToolsDialogListener(this);
+        mToolsDialog.setData(isClickedHelper, isClickedDouble, isClickedCover);
+        mToolsDialog.tryShow(getActivity().getSupportFragmentManager());
+    }
+
+    @Override
+    public void onHelperCardClicked() {
+        isClickedHelper = true;
+        String answer = mSelectGameBean.getAnswer();
+        if (TextUtils.isEmpty(answer)) {return;}
+        if (answer.equals(mSelectGameBean.getSelectA())) {
+            btnAnswerA.setSelected(true);
+            btnAnswerB.setSelected(false);
+            btnAnswerC.setSelected(false);
+        } else if (answer.equals(mSelectGameBean.getSelectB())) {
+            btnAnswerB.setSelected(true);
+            btnAnswerC.setSelected(false);
+            btnAnswerA.setSelected(false);
+        } else if (answer.equals(mSelectGameBean.getSelectC())) {
+            btnAnswerC.setSelected(true);
+            btnAnswerB.setSelected(false);
+            btnAnswerA.setSelected(false);
+        }
+        mListener.onAnswerRight(false);
+        mRightAnswer.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onDoubleCardClicked() {
+        isClickedDouble = true;
+    }
+
+    @Override
+    public void onCoverCardClicked() {
+        isClickedCover = true;
+        if (mListener != null) {
+            mListener.onCoverCardClicked();
         }
     }
 }

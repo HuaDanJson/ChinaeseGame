@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -23,9 +24,11 @@ import cool.chinalanguagegame.android.base.BaseActivity;
 import cool.chinalanguagegame.android.bean.CurrentUser;
 import cool.chinalanguagegame.android.bean.InputGameBean;
 import cool.chinalanguagegame.android.constants.AppConstant;
+import cool.chinalanguagegame.android.dialog.ToolsDialog;
 import cool.chinalanguagegame.android.fragment.InputGameFragment;
 import cool.chinalanguagegame.android.utils.ActivityUtil;
 import cool.chinalanguagegame.android.utils.CurrentUserHelper;
+import cool.chinalanguagegame.android.utils.ResourceUtil;
 import cool.chinalanguagegame.android.utils.ToastHelper;
 import cool.chinalanguagegame.android.view.CustomViewPager;
 
@@ -39,6 +42,7 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
     @BindView(R.id.iv_star3) ImageView ivStar3;
     @BindView(R.id.iv_star4) ImageView ivStar4;
     @BindView(R.id.iv_star5) ImageView ivStar5;
+    @BindView(R.id.ll_all_play_input_game_activity) LinearLayout mALLLinearLayout;
 
     private int mType;
     private int mStarCount;
@@ -49,6 +53,7 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
     private long firstBack = -1;
     private int mAllScore;
     private CurrentUser mCurrentUser;
+    private ToolsDialog mToolsDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,10 +153,16 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
     }
 
     @Override
-    public void onAnswerRight() {
-        mAllScore = mAllScore + 2;
-        mScoreTextView.setText("本关得分：" + String.valueOf(mAllScore));
-        mCurrentUser.setScore(mCurrentUser.getScore() + 2);
+    public void onAnswerRight(boolean isClickDouble) {
+        if (isClickDouble) {
+            mAllScore = mAllScore + 4;
+            mScoreTextView.setText("本关得分：" + String.valueOf(mAllScore));
+            mCurrentUser.setScore(mCurrentUser.getScore() + 4);
+        } else {
+            mAllScore = mAllScore + 2;
+            mScoreTextView.setText("本关得分：" + String.valueOf(mAllScore));
+            mCurrentUser.setScore(mCurrentUser.getScore() + 2);
+        }
         CurrentUserHelper.getInstance().updateCurrentUser(mCurrentUser);
         mCurrentUser.setScore(mCurrentUser.getScore());
         mCurrentUser.update(new UpdateListener() {
@@ -177,6 +188,12 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
         if ((mCustomViewPager != null) && (position >= 0) && (position < (allData - 1))) {
             mCustomViewPager.setCurrentItem(position + 1);
         }
+    }
+
+    @Override
+    public void onCoverCardClicked() {
+        if (mALLLinearLayout == null) {return;}
+        mALLLinearLayout.setBackground(ResourceUtil.getDrawable(R.drawable.icon_welcom));
     }
 
     @Override
