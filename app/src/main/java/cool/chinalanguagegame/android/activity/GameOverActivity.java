@@ -17,8 +17,10 @@ import butterknife.OnClick;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.adapter.CheckAnswerAdapter;
 import cool.chinalanguagegame.android.base.BaseActivity;
+import cool.chinalanguagegame.android.bean.CurrentUser;
 import cool.chinalanguagegame.android.bean.InputGameBean;
 import cool.chinalanguagegame.android.constants.AppConstant;
+import cool.chinalanguagegame.android.utils.CurrentUserHelper;
 
 public class GameOverActivity extends BaseActivity {
 
@@ -30,17 +32,21 @@ public class GameOverActivity extends BaseActivity {
     private int mThisScoreCount;
     private CheckAnswerAdapter mCheckAnswerAdapter;
     private int clickedCount;
+    private CurrentUser mCurrentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
         ButterKnife.bind(this);
+        mCurrentUser = CurrentUserHelper.getInstance().getCurrentUser();
+        if (mCurrentUser == null) {finish();}
         Intent intent = getIntent();
         if (intent == null) {onBackPressed();}
         mThisScoreCount = intent.getIntExtra(AppConstant.IntentKey.EXTRA_SCORE, 0);
         mInputGameBeanList = (ArrayList<InputGameBean>) intent.getSerializableExtra(AppConstant.IntentKey.EXTRA_DATA);
         mThisScore.setText("本关得分:" + String.valueOf(mThisScoreCount));
+        mAllScoreTextView.setText("当前总得分:" + String.valueOf(mCurrentUser.getScore()));
     }
 
     @Override

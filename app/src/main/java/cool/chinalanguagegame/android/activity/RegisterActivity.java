@@ -39,6 +39,10 @@ public class RegisterActivity extends BaseActivity {
             final CurrentUser user = new CurrentUser();
             user.setUsername(userName);
             user.setPassword(pwd);
+            user.setScore(0);
+            user.setTextColor(0);
+            user.setHelperCards(0);
+            user.setDoubleCards(0);
             user.signUp(new SaveListener<CurrentUser>() {
                 @Override
                 public void done(CurrentUser user, BmobException e) {

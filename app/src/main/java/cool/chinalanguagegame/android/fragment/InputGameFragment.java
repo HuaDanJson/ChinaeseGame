@@ -1,14 +1,19 @@
 package cool.chinalanguagegame.android.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.blankj.utilcode.util.LogUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +33,7 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
     @BindView(R.id.btn_next_question) Button mNextQuestion;
     @BindView(R.id.btn_sure_question) Button mSure;
     @BindView(R.id.btn_tool_question) Button mTools;
+    @BindView(R.id.ll_input_game_fragment) LinearLayout mInputGameFragment;
     public InputGameFragmentListener mListener;
     private int mPosition;
     private InputGameBean mInputGameBean;
@@ -105,6 +111,16 @@ public class InputGameFragment extends BaseFragment implements View.OnTouchListe
         }
         if (mListener != null) {
             mListener.onInputGameFragmentNextClicked(mPosition);
+        }
+    }
+
+    @OnClick(R.id.ll_input_game_fragment)
+    public void onHideSofKeyBoardtClicked() {
+        LogUtils.d("InputGameFragment  onHideSofKeyBoardtClicked()");
+        if (mInputEditText == null) {return;}
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(mInputEditText.getWindowToken(), 0);
         }
     }
 

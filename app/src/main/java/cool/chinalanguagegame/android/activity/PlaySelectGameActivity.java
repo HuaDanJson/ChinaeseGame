@@ -16,13 +16,17 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseActivity;
+import cool.chinalanguagegame.android.bean.CurrentUser;
 import cool.chinalanguagegame.android.bean.InputGameBean;
 import cool.chinalanguagegame.android.bean.SelectGameBean;
 import cool.chinalanguagegame.android.constants.AppConstant;
 import cool.chinalanguagegame.android.fragment.SelectGameFragment;
 import cool.chinalanguagegame.android.utils.ActivityUtil;
+import cool.chinalanguagegame.android.utils.CurrentUserHelper;
 import cool.chinalanguagegame.android.utils.ToastHelper;
 import cool.chinalanguagegame.android.view.CustomViewPager;
 
@@ -44,12 +48,15 @@ public class PlaySelectGameActivity extends BaseActivity implements SelectGameFr
     private List<Fragment> mSelectFragmentList = new ArrayList<>();
     private long firstBack = -1;
     private int mAllScore;
+    private CurrentUser mCurrentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_select);
         ButterKnife.bind(this);
+        mCurrentUser = CurrentUserHelper.getInstance().getCurrentUser();
+        if (mCurrentUser == null) {finish();}
         Intent intent = getIntent();
         if (intent == null) {finish();}
         mType = intent.getIntExtra(AppConstant.IntentKey.EXTRA_TYPE, 0);
@@ -147,6 +154,19 @@ public class PlaySelectGameActivity extends BaseActivity implements SelectGameFr
     public void onAnswerRight() {
         mAllScore = mAllScore + 2;
         tvScorePlaySelectGame.setText("本关得分：" + String.valueOf(mAllScore));
+        mCurrentUser.setScore(mCurrentUser.getScore() + 2);
+        CurrentUserHelper.getInstance().updateCurrentUser(mCurrentUser);
+        mCurrentUser.setScore(mCurrentUser.getScore());
+        mCurrentUser.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    LogUtils.d("PlaySelectGameActivity onAnswerRight 33  update Score success");
+                } else {
+                    LogUtils.d("PlaySelectGameActivity onAnswerRight 44 pdate Score failed : " + e.getMessage());
+                }
+            }
+        });
     }
 
     @Override
