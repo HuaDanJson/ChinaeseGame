@@ -73,11 +73,7 @@ public class ToolsDialog extends BaseFragmentDialog {
         }
         mHelperCard.setText("帮助卡 (剩余：" + mCurrentUser.getHelperCards() + ")");
         mDoubleCard.setText("双倍卡 (剩余：" + mCurrentUser.getDoubleCards() + ")");
-        if (mCurrentUser.getTextColor() <= 0) {
-            mCoverCard.setText("更换背景 (未购买)");
-        } else {
-            mCoverCard.setText("更换背景 (已购买)");
-        }
+        mCoverCard.setText("更换背景 (剩余：" + mCurrentUser.getTextColor() + ")");
     }
 
     @Override
@@ -146,17 +142,31 @@ public class ToolsDialog extends BaseFragmentDialog {
 
     @OnClick(R.id.tv_cover_card_dialog)
     public void onCoverCardClicked(View view) {
+        if (mCurrentUser.getTextColor() <= 0) {
+            ToastHelper.showShortMessage("未购买背景");
+            return;
+        }
+
         if (mIsClickedCover) {
             ToastHelper.showShortMessage("您已更换背景");
             return;
         }
 
-        if (mCurrentUser.getTextColor() <= 0) {
-            ToastHelper.showShortMessage("未购买背景");
-            return;
-        }
         if (mListener != null) {
             mListener.onCoverCardClicked();
+            mCurrentUser.setTextColor(mCurrentUser.getTextColor() - 1);
+            CurrentUserHelper.getInstance().updateCurrentUser(mCurrentUser);
+            mCoverCard.setText("更换背景 (剩余：" + mCurrentUser.getTextColor() + ")");
+            mCurrentUser.update(new UpdateListener() {
+                @Override
+                public void done(BmobException e) {
+                    if (e == null) {
+                        LogUtils.d("PlayInputGameActivity onAnswerRight update Score success");
+                    } else {
+                        LogUtils.d("PlayInputGameActivity onAnswerRight update Score failed : " + e.getMessage());
+                    }
+                }
+            });
             tryHide();
         }
     }
