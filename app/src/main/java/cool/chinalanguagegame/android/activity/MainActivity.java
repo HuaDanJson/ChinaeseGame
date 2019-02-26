@@ -15,6 +15,7 @@ import cn.bmob.v3.listener.FetchUserInfoListener;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseActivity;
 import cool.chinalanguagegame.android.bean.CurrentUser;
+import cool.chinalanguagegame.android.dialog.LogoutDialog;
 import cool.chinalanguagegame.android.utils.CurrentUserHelper;
 import cool.chinalanguagegame.android.utils.ToastHelper;
 
@@ -24,6 +25,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.btn_store) Button btnStore;
     @BindView(R.id.btn_logout) Button btnLogout;
     private long firstBack = -1;
+    private LogoutDialog mLogoutDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +79,10 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.btn_logout)
     public void logoutClicked() {
-        BmobUser.logOut();
-        toActivity(LoginActivity.class);
-        finish();
+        if (mLogoutDialog == null) {
+            mLogoutDialog = new LogoutDialog();
+        }
+        mLogoutDialog.tryShow(getSupportFragmentManager());
     }
 
     @Override

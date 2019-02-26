@@ -94,5 +94,4 @@
         <item name="android:windowExitAnimation">@anim/dialog_slide_out_from_middle_to_bottom</item>
     </style>
 
-
 </resources>
