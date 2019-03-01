@@ -84,7 +84,7 @@
 
     <!-- 启动页主题 -->
     <style name="SplashTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/icon_welcom</item>
+        <item name="android:windowBackground">@drawable/icon_welecome2</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
