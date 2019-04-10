@@ -10,6 +10,6 @@ public class SmallChiActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_small_chi);
+        setContentView(R.layout.activity_primary_shi_ci);
     }
 }

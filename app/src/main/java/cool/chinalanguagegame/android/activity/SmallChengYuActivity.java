@@ -26,7 +26,7 @@ import cool.chinalanguagegame.android.utils.ToastHelper;
 
 public class SmallChengYuActivity extends BaseActivity implements InputGameFragment.InputGameFragmentListener {
 
-    @BindView(R.id.vp_small_cheng_yu) ViewPager mViewPager;
+    @BindView(R.id.vp_primary_cheng_yu) ViewPager mViewPager;
 
     private GameAdapter mGameAdapter;
     private List<Fragment> mExameFragmentList = new ArrayList<>();
@@ -36,7 +36,7 @@ public class SmallChengYuActivity extends BaseActivity implements InputGameFragm
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_small_cheng_yu);
+        setContentView(R.layout.activity_primary_cheng_yu);
         ButterKnife.bind(this);
         BmobQuery<PrimaryWords> query = new BmobQuery<>();
         query.setLimit(50).order("createdAt")

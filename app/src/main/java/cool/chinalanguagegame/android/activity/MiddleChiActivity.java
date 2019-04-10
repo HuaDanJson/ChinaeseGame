@@ -9,6 +9,6 @@ public class MiddleChiActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_middle_chi);
+        setContentView(R.layout.activity_middle_shi_ci);
     }
 }

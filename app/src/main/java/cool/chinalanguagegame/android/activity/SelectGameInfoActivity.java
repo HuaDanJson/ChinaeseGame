@@ -22,7 +22,7 @@ public class SelectGameInfoActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_small_select_game);
+        setContentView(R.layout.activity_primary_select_game);
         ButterKnife.bind(this);
         mType = getIntent().getIntExtra(AppConstant.IntentKey.EXTRA_TYPE, 0);
         if (mType <= 0) {
@@ -36,10 +36,10 @@ public class SelectGameInfoActivity extends BaseActivity {
                 mTitle.setText("小学诗词");
                 break;
             case 3:
-                mTitle.setText("初中成语");
+                mTitle.setText("中学成语");
                 break;
             case 4:
-                mTitle.setText("初中诗词");
+                mTitle.setText("中学诗词");
                 break;
             default:
                 break;

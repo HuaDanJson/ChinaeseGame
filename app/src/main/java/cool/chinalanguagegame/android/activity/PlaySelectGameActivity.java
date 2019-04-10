@@ -76,10 +76,10 @@ public class PlaySelectGameActivity extends BaseActivity implements SelectGameFr
                 mTitle.setText("小学诗词选择");
                 break;
             case 3:
-                mTitle.setText("初中成语选择");
+                mTitle.setText("中学成语选择");
                 break;
             case 4:
-                mTitle.setText("初中诗词选择");
+                mTitle.setText("中学诗词选择");
                 break;
             default:
                 break;
@@ -198,7 +198,7 @@ public class PlaySelectGameActivity extends BaseActivity implements SelectGameFr
     @Override
     public void onCoverCardClicked() {
         if (mALLLinearLayout == null) {return;}
-        mALLLinearLayout.setBackground(ResourceUtil.getDrawable(R.drawable.icon_welcom));
+        mALLLinearLayout.setBackground(ResourceUtil.getDrawable(R.drawable.icon_welcome));
     }
 
     class PlaySelectGameViewPageAdapter extends FragmentPagerAdapter {

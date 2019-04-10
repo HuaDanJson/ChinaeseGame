@@ -84,7 +84,7 @@ public class SelectInputGameActivity extends BaseActivity {
                         });
                 break;
             case 3:
-                mTitle.setText("初中成语填空");
+                mTitle.setText("中学成语填空");
                 BmobQuery<MiddleWords> query3 = new BmobQuery<>();
                 query3.setLimit(50).order("createdAt")
                         .findObjects(new FindListener<MiddleWords>() {
@@ -99,7 +99,7 @@ public class SelectInputGameActivity extends BaseActivity {
                         });
                 break;
             case 4:
-                mTitle.setText("初中诗词填空");
+                mTitle.setText("中学诗词填空");
                 BmobQuery<MiddlePoetry> query4 = new BmobQuery<>();
                 query4.setLimit(50).order("createdAt")
                         .findObjects(new FindListener<MiddlePoetry>() {

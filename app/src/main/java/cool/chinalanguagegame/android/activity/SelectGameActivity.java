@@ -38,13 +38,13 @@ public class SelectGameActivity extends BaseActivity {
 
     @OnClick(R.id.btn_middle_words)
     public void middleWordsClicked() {
-        //初中成语
+        //中学成语
         ActivityUtil.startSelectGameInfoActivity(this, 3);
     }
 
     @OnClick(R.id.btn_middle_poetry)
     public void middlePoetryClicked() {
-        //初中诗词
+        //中学诗词
         ActivityUtil.startSelectGameInfoActivity(this, 4);
     }
 }

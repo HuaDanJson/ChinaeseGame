@@ -81,12 +81,12 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
                 LogUtils.d("PlayInputGameActivity 222 mPrimaryPoetryList :" + mInputGameBeanList);
                 break;
             case 3:
-                mTitle.setText("初中成语填空");
+                mTitle.setText("中学成语填空");
                 mInputGameBeanList = (ArrayList<InputGameBean>) intent.getSerializableExtra(AppConstant.IntentKey.EXTRA_DATA);
                 LogUtils.d("PlayInputGameActivity 333 mMiddleWordsList :" + mInputGameBeanList);
                 break;
             case 4:
-                mTitle.setText("初中诗词填空");
+                mTitle.setText("中学诗词填空");
                 mInputGameBeanList = (ArrayList<InputGameBean>) intent.getSerializableExtra(AppConstant.IntentKey.EXTRA_DATA);
                 LogUtils.d("PlayInputGameActivity 444 mMiddlePoetryList :" + mInputGameBeanList);
                 break;
@@ -193,7 +193,7 @@ public class PlayInputGameActivity extends BaseActivity implements InputGameFrag
     @Override
     public void onCoverCardClicked() {
         if (mALLLinearLayout == null) {return;}
-        mALLLinearLayout.setBackground(ResourceUtil.getDrawable(R.drawable.icon_welcom));
+        mALLLinearLayout.setBackground(ResourceUtil.getDrawable(R.drawable.icon_welcome));
     }
 
     @Override

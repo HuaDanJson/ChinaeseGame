@@ -14,6 +14,7 @@ import cn.bmob.v3.listener.UpdateListener;
 import cool.chinalanguagegame.android.R;
 import cool.chinalanguagegame.android.base.BaseActivity;
 import cool.chinalanguagegame.android.bean.CurrentUser;
+import cool.chinalanguagegame.android.dialog.StoreDialog;
 import cool.chinalanguagegame.android.utils.CurrentUserHelper;
 import cool.chinalanguagegame.android.utils.ToastHelper;
 
@@ -24,8 +25,10 @@ public class StoreActivity extends BaseActivity {
     @BindView(R.id.btn_surplus_help_card) Button mSurplusHelpCard;
     @BindView(R.id.btn_buy_double_card) Button mBuyDoubleCard;
     @BindView(R.id.btn_surplus_double_card) Button mSurplusDoubleCard;
-    @BindView(R.id.btn_buy_background_card) Button mBuyBackgroundCard;
-    @BindView(R.id.btn_surplus_background_card) Button mSurplusBackgroundCard;
+    @BindView(R.id.btn_buy_background_card1) Button mBuyBackgroundCard;
+    @BindView(R.id.btn_surplus_background_card1) Button mSurplusBackgroundCard;
+
+    private StoreDialog mStoreDialog;
 
     private CurrentUser mCurrentUser;
 
@@ -92,7 +95,7 @@ public class StoreActivity extends BaseActivity {
         }
     }
 
-    @OnClick(R.id.btn_buy_background_card)
+    @OnClick(R.id.btn_buy_background_card1)
     public void buyBackgroundClicked() {
         int score = mCurrentUser.getScore();
         if (score < 6) {
@@ -116,5 +119,32 @@ public class StoreActivity extends BaseActivity {
             });
         }
     }
+
+    public void showStoreDialog(int type){
+        if (mStoreDialog==null){
+            mStoreDialog = new StoreDialog();
+        }
+        mStoreDialog.setData(type);
+        mStoreDialog.tryShow(getSupportFragmentManager());
+    }
+
+
+    @OnClick(R.id.tbn_store1)
+    public void storeClicked1(){
+        showStoreDialog(1);
+    }
+
+    @OnClick(R.id.tbn_store2)
+    public void storeClicked2(){
+        showStoreDialog(2);
+    }
+
+    @OnClick(R.id.tbn_store3)
+    public void storeClicked3(){
+        showStoreDialog(3);
+    }
+
+
+
 
 }

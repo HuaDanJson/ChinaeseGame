@@ -79,7 +79,7 @@ public class SelectSelectActivity extends BaseActivity {
                         });
                 break;
             case 3:
-                mTitle.setText("初中成语选择");
+                mTitle.setText("中学成语选择");
                 BmobQuery<MiddleWordsSelect> query3 = new BmobQuery<>();
                 query3.setLimit(50).order("createdAt")
                         .findObjects(new FindListener<MiddleWordsSelect>() {
@@ -94,7 +94,7 @@ public class SelectSelectActivity extends BaseActivity {
                         });
                 break;
             case 4:
-                mTitle.setText("初中诗词选择");
+                mTitle.setText("中学诗词选择");
                 BmobQuery<MiddlePoetrySelect> query4 = new BmobQuery<>();
                 query4.setLimit(50).order("createdAt")
                         .findObjects(new FindListener<MiddlePoetrySelect>() {

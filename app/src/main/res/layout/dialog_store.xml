@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_store_dialog"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black50"
+    android:gravity="center"
+    android:paddingEnd="@dimen/common_dialog_body_padding_right"
+    android:paddingLeft="@dimen/common_dialog_body_padding_left"
+    android:paddingRight="@dimen/common_dialog_body_padding_right"
+    android:paddingStart="@dimen/common_dialog_body_padding_left"
+    tools:ignore="MissingPrefix">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp"
+        android:background="@drawable/shape_common_blue_rectange">
+
+        <TextView
+            android:id="@+id/tv_title_store_dialog"
+            style="@style/TextStyleRobotoMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:gravity="center"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="21dp"
+            android:text="商店提示"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
